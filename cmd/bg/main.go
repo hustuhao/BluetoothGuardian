@@ -36,9 +36,9 @@ func main() {
 	// set app icon
 	myWindow.SetIcon(r)
 
-	startChan := make(chan bool)   // send start command
-	stopChan := make(chan bool)    // send start command
-	go myFunc(startChan, stopChan) // run your job
+	startChan := make(chan bool, 1) // send start command
+	stopChan := make(chan bool, 1)  // send start command
+	go myFunc(startChan, stopChan)  // run your job
 
 	var button *widget.Button // init buttons
 	button = widget.NewButtonWithIcon(startBKText, theme.MediaPlayIcon(), func() {
@@ -72,7 +72,7 @@ func main() {
 }
 
 func myFunc(start, stop chan bool) {
-	done := make(chan bool)
+	done := make(chan bool, 1)
 	for {
 		running := false
 		select {

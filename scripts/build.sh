@@ -14,7 +14,7 @@ cd "${ROOT_DIR}/${APP_DIR}"
 go build -o "${APP_NAME}"
 fyne package --exe "${APP_NAME}" --profile "${APP_NAME}.app" --name "${APP_NAME}"
 cp -R "${APP_NAME}.app" "${ROOT_DIR}/${PKG_DIR}"
-rm -rf "${APP_NAME}.app" "$APP_NAME"
+rm -rf "${APP_NAME}.app" "${APP_NAME}"
 
 # 创建用于打包的目录
 cd "${ROOT_DIR}"
